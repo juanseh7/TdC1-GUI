@@ -55,14 +55,22 @@ def parse_csv(filename, offset, vinPort, voutPort):
         if data["vin"].__len__() > 0:
             vin_offset = [v + offset for v in data["vin"]]
             # Plot vin
-            plt.plot(data["t"], vin_offset, label='Vin', marker='o', color='red')
+            plt.plot(data["t"], 
+                     vin_offset, 
+                     label='Vin', 
+                     # marker='o', 
+                     color='red')
         if data["vout"].__len__() > 0:
             vout_offset = [v + offset for v in data["vout"]]
             # Plot vout
-            plt.plot(data["t"], vout_offset, label='Vout', marker='x', color='blue')
+            plt.plot(data["t"], 
+                     vout_offset, 
+                     label='Vout', 
+                     # marker='x', 
+                     color='blue')
 
         # Adding titles and labels
-        plt.title('Vin and Vout over Time')
+        plt.title('Voltages over Time')
         plt.xlabel('Time $(\mu s)$')
         plt.ylabel('Voltage (V)')
 
