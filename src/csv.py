@@ -18,6 +18,9 @@ def read_csv(filename, vinPort, voutPort):
     with open(filename) as csvfile:
         reader = csv.DictReader(csvfile)
         if len(reader.fieldnames) == 5:
+            if vinPort > 4 or voutPort > 4:
+                print("Port number exceeds the number of ports")
+                return None
             if vinPort == 0:
                 vinPortString = "3"
             if voutPort == 0:
@@ -28,6 +31,9 @@ def read_csv(filename, vinPort, voutPort):
                     data["vout"].append(float(row[voutPortString]) )
                     data["vin"].append(float(row[vinPortString]) )
         else:
+            if vinPort > 2 or voutPort > 2:
+                print("Port number exceeds the number of ports")
+                return None
             if vinPort == 0:
                 vinPortString = "2"
             if voutPort == 0:
