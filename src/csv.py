@@ -98,6 +98,12 @@ def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
         plt.xlabel('Time $(\mu s)$')
         plt.ylabel('Voltage (V)')
 
+        xMin = min(data["t"])
+        xMax = max(data["t"])
+
+        # Remove excess graph
+        plt.xlim([xMin, xMax])
+
         # Add a legend
         plt.legend()
 
