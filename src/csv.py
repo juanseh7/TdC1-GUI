@@ -1,7 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
 
-def read_csv(filename, vinPort, voutPort):
+def read_csv(filename, v1Port, v2Port, v3Port, v4Port):
     # Check if the file extension is .csv
     if not filename.lower().endswith('.csv'):
         return None
@@ -9,26 +9,34 @@ def read_csv(filename, vinPort, voutPort):
     data = dict()
 
     data["t"] = []
-    data["vin"] = []
-    data["vout"] = []
+    data["v1"] = []
+    data["v2"] = []
+    data["v3"] = []
+    data["v4"] = []
 
-    voutPortString = str(voutPort)
-    vinPortString = str(vinPort)
+    v1PortString = str(v1Port)
+    v2PortString = str(v2Port)
+    v3PortString = str(v3Port)
+    v4PortString = str(v4Port)
 
     with open(filename) as csvfile:
         reader = csv.DictReader(csvfile)
         cols = len(reader.fieldnames)
 
-        if vinPort >= cols or voutPort >= cols:
+        if v1Port >= cols or v2Port >= cols or v3Port >= cols or v4Port >= cols:
             print("Port number exceeds the number of ports")
             return None
         for row in reader:
             if row["x-axis"] != "second":
                 data["t"].append(float(row["x-axis"])*1e6 ) # Convert to microseconds
-                if voutPort != 0:
-                    data["vout"].append(float(row[voutPortString]))
-                if vinPort != 0:
-                    data["vin"].append(float(row[vinPortString]) )
+                if v1Port != 0:
+                    data["v1"].append(float(row[v1PortString]))
+                if v2Port != 0:
+                    data["v2"].append(float(row[v2PortString]) )
+                if v3Port != 0:
+                    data["v3"].append(float(row[v3PortString]))
+                if v4Port != 0:
+                    data["v4"].append(float(row[v4PortString]) )
 
     return data
 
@@ -47,27 +55,43 @@ def read_csv_bode(filename):
                 data[content].append(float(row[content]))
     return data
 
-def parse_csv(filename, offset, vinPort, voutPort):
-    data = read_csv(filename, vinPort, voutPort)
+def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
+    data = read_csv(filename, v1Port, v2Port, v3Port, v4Port)
 
     if data is not None:
         # Apply offset to the data
-        if data["vin"].__len__() > 0:
-            vin_offset = [v + offset for v in data["vin"]]
-            # Plot vin
+        if data["v1"].__len__() > 0:
+            v1_offset = [v + offset for v in data["v1"]]
+            # Plot v1
             plt.plot(data["t"], 
-                     vin_offset, 
-                     label='Vin', 
+                     v1_offset, 
+                     label='v1', 
                      # marker='o', 
                      color='red')
-        if data["vout"].__len__() > 0:
-            vout_offset = [v + offset for v in data["vout"]]
-            # Plot vout
+        if data["v2"].__len__() > 0:
+            v2_offset = [v + offset for v in data["v2"]]
+            # Plot v2
             plt.plot(data["t"], 
-                     vout_offset, 
-                     label='Vout', 
+                     v2_offset, 
+                     label='v2', 
                      # marker='x', 
                      color='blue')
+        if data["v3"].__len__() > 0:
+            v3_offset = [v + offset for v in data["v3"]]
+            # Plot v3
+            plt.plot(data["t"], 
+                     v3_offset, 
+                     label='v3', 
+                     # marker='x', 
+                     color='green')
+        if data["v4"].__len__() > 0:
+            v4_offset = [v + offset for v in data["v4"]]
+            # Plot v4
+            plt.plot(data["t"], 
+                     v4_offset, 
+                     label='v4', 
+                     # marker='x', 
+                     color='yellow')
 
         # Adding titles and labels
         plt.title('Voltages over Time')

@@ -55,8 +55,10 @@ class MyWindow(QMainWindow, Ui_MainWindow):
     def confirm(self):
         file_path = self.fileLineEdit.text()
         offset = self.doubleSpinBox.value()
-        vinPort = self.selectVinPort.value()
-        voutPort = self.selectVoutPort.value()
+        v1Port = self.selectV1Port.value()
+        v2Port = self.selectV2Port.value()
+        v3Port = self.selectV3Port.value()
+        v4Port = self.selectV4Port.value()
 
-        parse_csv(file_path, offset, vinPort, voutPort)
+        graph_csv(file_path, offset, v1Port, v2Port, v3Port, v4Port)
         # Add your confirmation logic here (e.g., process the file and number)

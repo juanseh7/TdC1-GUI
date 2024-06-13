@@ -89,20 +89,20 @@
      <string>Select offset</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="selectVinPort">
+   <widget class="QSpinBox" name="selectV1Port">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>340</x>
       <y>120</y>
       <width>45</width>
       <height>30</height>
      </rect>
     </property>
    </widget>
-   <widget class="QSpinBox" name="selectVoutPort">
+   <widget class="QSpinBox" name="selectV2Port">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>340</x>
       <y>160</y>
       <width>45</width>
       <height>30</height>
@@ -112,27 +112,73 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>290</x>
       <y>130</y>
       <width>41</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Vin Port</string>
+     <string>V1 Port</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>290</x>
       <y>170</y>
-      <width>51</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Vout Port</string>
+     <string>V2 Port</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="selectV3Port">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>120</y>
+      <width>45</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="selectV4Port">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>160</y>
+      <width>45</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>130</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>V3 Port</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>170</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>V4 Port</string>
     </property>
    </widget>
   </widget>
