@@ -42,6 +42,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.selectFileButton = MyButton("Select or Drop File Here", self)
         self.selectFileButton.move(90, 39)  # Adjust the position if needed
 
+        self.selectV1Multiplier.setValue(1.0)
+        self.selectV2Multiplier.setValue(1.0)
+        self.selectV3Multiplier.setValue(1.0)
+        self.selectV4Multiplier.setValue(1.0)
+
         # Connect the confirm button to the confirm function
         self.confirmButton.clicked.connect(self.confirm)
 
@@ -54,11 +59,21 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
     def confirm(self):
         file_path = self.fileLineEdit.text()
-        offset = self.doubleSpinBox.value()
+
         v1Port = self.selectV1Port.value()
         v2Port = self.selectV2Port.value()
         v3Port = self.selectV3Port.value()
         v4Port = self.selectV4Port.value()
 
-        graph_csv(file_path, offset, v1Port, v2Port, v3Port, v4Port)
+        v1Offset = self.selectV1Offset.value()
+        v2Offset = self.selectV2Offset.value()
+        v3Offset = self.selectV3Offset.value()
+        v4Offset = self.selectV4Offset.value()
+
+        v1Multiplier = self.selectV1Multiplier.value()
+        v2Multiplier = self.selectV2Multiplier.value()
+        v3Multiplier = self.selectV3Multiplier.value()
+        v4Multiplier = self.selectV4Multiplier.value()
+
+        graph_csv(file_path, v1Port, v2Port, v3Port, v4Port, v1Offset, v2Offset, v3Offset, v4Offset, v1Multiplier, v2Multiplier, v3Multiplier, v4Multiplier)
         # Add your confirmation logic here (e.g., process the file and number)

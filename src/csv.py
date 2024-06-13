@@ -55,13 +55,13 @@ def read_csv_bode(filename):
                 data[content].append(float(row[content]))
     return data
 
-def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
+def graph_csv(filename, v1Port, v2Port, v3Port, v4Port, v1Offset, v2Offset, v3Offset, v4Offset, v1Multiplier, v2Multiplier, v3Multiplier, v4Multiplier):
     data = read_csv(filename, v1Port, v2Port, v3Port, v4Port)
 
     if data is not None:
         # Apply offset to the data
         if data["v1"].__len__() > 0:
-            v1_offset = [v + offset for v in data["v1"]]
+            v1_offset = [v*v1Multiplier + v1Offset for v in data["v1"]]
             # Plot v1
             plt.plot(data["t"], 
                      v1_offset, 
@@ -69,7 +69,7 @@ def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
                      # marker='o', 
                      color='red')
         if data["v2"].__len__() > 0:
-            v2_offset = [v + offset for v in data["v2"]]
+            v2_offset = [v*v2Multiplier + v2Offset for v in data["v2"]]
             # Plot v2
             plt.plot(data["t"], 
                      v2_offset, 
@@ -77,7 +77,7 @@ def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
                      # marker='x', 
                      color='blue')
         if data["v3"].__len__() > 0:
-            v3_offset = [v + offset for v in data["v3"]]
+            v3_offset = [v*v3Multiplier + v3Offset for v in data["v3"]]
             # Plot v3
             plt.plot(data["t"], 
                      v3_offset, 
@@ -85,7 +85,7 @@ def graph_csv(filename, offset, v1Port, v2Port, v3Port, v4Port):
                      # marker='x', 
                      color='green')
         if data["v4"].__len__() > 0:
-            v4_offset = [v + offset for v in data["v4"]]
+            v4_offset = [v*v4Multiplier + v4Offset for v in data["v4"]]
             # Plot v4
             plt.plot(data["t"], 
                      v4_offset, 
