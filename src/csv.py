@@ -112,4 +112,4 @@ def graph_csv(filename, v1Port, v2Port, v3Port, v4Port, v1Offset, v2Offset, v3Of
         plt.show()
 
     else:
-        print("The file is not a CSV file")
+        print("There was an error while reading the file. Make sure that the file is a .CSV file and that you are not selecting an invalid port.")
