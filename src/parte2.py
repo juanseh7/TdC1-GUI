@@ -4,8 +4,8 @@ import control as ctl
 
 # Define the components
 R = 50  # Ohms
-C = 47e-6  # Farads
-L = 10e-3  # Henries
+C = 4.7e-8  # Farads
+L = 0.001  # Henries
 
 # Define the transfer function H(s)
 # RC measuring on C --- Figura 2
@@ -19,9 +19,9 @@ L = 10e-3  # Henries
 # system = ctl.TransferFunction(numerator, denominator)
 
 # RLC measuring on C --- Figura 4
-numerator = [1]
-denominator = [L * C, R * C, 1]
-system = ctl.TransferFunction(numerator, denominator)
+# numerator = [1]
+# denominator = [L * C, R * C, 1]
+# system = ctl.TransferFunction(numerator, denominator)
 
 # RCL measuring on L --- Figura 5
 # numerator = [L * C, 0, 0]
@@ -34,9 +34,9 @@ system = ctl.TransferFunction(numerator, denominator)
 # system = ctl.TransferFunction(numerator, denominator)
 
 # RCL measuring on CL --- Figura 7
-# numerator = [L * C, 0, 1]
-# denominator = [L * C, R * C, 1]
-# system = ctl.TransferFunction(numerator, denominator)
+numerator = [L * C, 0, 1]
+denominator = [L * C, R * C, 1]
+system = ctl.TransferFunction(numerator, denominator)
 
 # Compute the frequency response
 frequencies = np.logspace(1, 6, 1000)  # from 10 Hz to 1 MHz
