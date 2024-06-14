@@ -29,14 +29,14 @@ L = 0.001  # Henries
 # system = ctl.TransferFunction(numerator, denominator)
 
 # CLR measuring on R --- Figura 6
-# numerator = [R, 0]
-# denominator = [L * C, R * C, 1]
-# system = ctl.TransferFunction(numerator, denominator)
-
-# RCL measuring on CL --- Figura 7
-numerator = [L * C, 0, 1]
+numerator = [R * C, 0]
 denominator = [L * C, R * C, 1]
 system = ctl.TransferFunction(numerator, denominator)
+
+# RCL measuring on CL --- Figura 7
+# numerator = [L * C, 0, 1]
+# denominator = [L * C, R * C, 1]
+# system = ctl.TransferFunction(numerator, denominator)
 
 # Compute the frequency response
 frequencies = np.logspace(1, 6, 1000)  # from 10 Hz to 1 MHz
